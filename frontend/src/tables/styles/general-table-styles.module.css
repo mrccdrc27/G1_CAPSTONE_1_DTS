@@ -1,0 +1,26 @@
+/* Priority status styles */
+.priorityWrapper {
+  display: inline-block; 
+  padding: 2px 10px; 
+  border-radius: 12px; 
+  font-size: var(--table-font-size);
+  font-weight: 600;
+  text-transform: uppercase; 
+  white-space: nowrap; 
+  text-align: center;
+}
+
+.ticketCell.priority-high .priorityWrapper{
+  color: var(--error-color); 
+  background-color: #ffccc7;
+}
+
+.ticketCell.priority-medium .priorityWrapper{
+  background-color: #ffe58f;
+  color: var(--alert-color);   
+}
+
+.ticketCell.priority-low .priorityWrapper{
+  background-color: #D4F2DC;
+  color: var(--success-color); 
+}
