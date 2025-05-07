@@ -86,6 +86,10 @@ export function AgentStatus({ status }) {
         'Active': 'green',
         'Pending': 'gray',
         'Suspended': 'red',
+        'Inactive': 'gray',
+        'Disabled': 'red',
+        'resolved':'green',
+        'cancelled':'red',
     };
 
     return (
@@ -106,3 +110,4 @@ export function AgentStatus({ status }) {
         </div>
     );
 }
+

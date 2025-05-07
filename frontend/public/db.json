@@ -354,106 +354,166 @@
     }
   ],
   "workflow": [
-      {
-        "name": "Employee Onboarding",
-        "department": "Human Resources",
-        "description": "Handles onboarding for new employees."
-      },
-      {
-        "name": "IT Ticket Resolution",
-        "department": "IT Support",
-        "description": "Tracks the resolution of technical support tickets."
-      },
-      {
-        "name": "Marketing Campaign Launch",
-        "department": "Marketing",
-        "description": "Coordinates tasks for launching a new campaign."
-      },
-      {
-        "name": "Quarterly Budget Review",
-        "department": "Finance",
-        "description": "Reviews and finalizes departmental budgets quarterly."
-      },
-      {
-        "name": "New Vendor Approval",
-        "department": "Procurement",
-        "description": "Evaluates and approves new vendors for company use."
-      },
-      {
-        "name": "Product Development Sprint",
-        "department": "Engineering",
-        "description": "Manages product development sprints and tasks."
-      },
-      {
-        "name": "Client Onboarding",
-        "department": "Customer Success",
-        "description": "Guides new clients through onboarding steps."
-      },
-      {
-        "name": "Performance Review Cycle",
-        "department": "HR",
-        "description": "Organizes performance reviews for all employees."
-      },
-      {
-        "name": "Website Redesign",
-        "department": "Design",
-        "description": "Oversees redesign of the company website."
-      },
-      {
-        "name": "Data Privacy Audit",
-        "department": "Legal",
-        "description": "Conducts audits to ensure data privacy compliance."
-      },
-      {
-        "name": "Training Schedule",
-        "department": "Learning & Development",
-        "description": "Schedules and tracks employee training sessions."
-      },
-      {
-        "name": "Inventory Restock",
-        "department": "Operations",
-        "description": "Handles restocking inventory and supply chain checks."
-      },
-      {
-        "name": "Incident Management",
-        "department": "Risk Management",
-        "description": "Manages reporting and resolution of incidents."
-      },
-      {
-        "name": "Software License Renewal",
-        "department": "IT",
-        "description": "Tracks renewal of software licenses."
-      },
-      {
-        "name": "Remote Work Setup",
-        "department": "Admin",
-        "description": "Coordinates remote work equipment and access."
-      },
-      {
-        "name": "Internal Audit Process",
-        "department": "Compliance",
-        "description": "Steps for conducting internal audits."
-      },
-      {
-        "name": "Customer Feedback Loop",
-        "department": "Customer Experience",
-        "description": "Collects and processes customer feedback."
-      },
-      {
-        "name": "Annual Report Preparation",
-        "department": "Corporate Affairs",
-        "description": "Manages creation of the annual corporate report."
-      },
-      {
-        "name": "Sales Pipeline Review",
-        "department": "Sales",
-        "description": "Reviews progress and performance of sales pipelines."
-      },
-      {
-        "name": "Security Patch Deployment",
-        "department": "Cybersecurity",
-        "description": "Plans and executes deployment of security patches."
-      }
+    {
+      "name": "Employee Onboarding",
+      "department": "Human Resources",
+      "description": "Handles onboarding for new employees.",
+      "division": "Workflow Division",
+      "ticket": 24,
+      "status": "Active"
+    },
+    {
+      "name": "IT Ticket Resolution",
+      "department": "IT Support",
+      "description": "Tracks the resolution of technical support tickets.",
+      "division": "Workflow Division",
+      "ticket": 120,
+      "status": "Active"
+    },
+    {
+      "name": "Marketing Campaign Launch",
+      "department": "Marketing",
+      "description": "Coordinates tasks for launching a new campaign.",
+      "division": "Workflow Division",
+      "ticket": 15,
+      "status": "Inactive"
+    },
+    {
+      "name": "Quarterly Budget Review",
+      "department": "Finance",
+      "description": "Reviews and finalizes departmental budgets quarterly.",
+      "division": "Workflow Division",
+      "ticket": 8,
+      "status": "Disabled"
+    },
+    {
+      "name": "New Vendor Approval",
+      "department": "Procurement",
+      "description": "Evaluates and approves new vendors for company use.",
+      "division": "Workflow Division",
+      "ticket": 12,
+      "status": "Active"
+    },
+    {
+      "name": "Product Development Sprint",
+      "department": "Engineering",
+      "description": "Manages product development sprints and tasks.",
+      "division": "Workflow Division",
+      "ticket": 42,
+      "status": "Active"
+    },
+    {
+      "name": "Client Onboarding",
+      "department": "Customer Success",
+      "description": "Guides new clients through onboarding steps.",
+      "division": "Workflow Division",
+      "ticket": 19,
+      "status": "Inactive"
+    },
+    {
+      "name": "Performance Review Cycle",
+      "department": "HR",
+      "description": "Organizes performance reviews for all employees.",
+      "division": "Workflow Division",
+      "ticket": 10,
+      "status": "Active"
+    },
+    {
+      "name": "Website Redesign",
+      "department": "Design",
+      "description": "Oversees redesign of the company website.",
+      "division": "Workflow Division",
+      "ticket": 7,
+      "status": "Disabled"
+    },
+    {
+      "name": "Data Privacy Audit",
+      "department": "Legal",
+      "description": "Conducts audits to ensure data privacy compliance.",
+      "division": "Workflow Division",
+      "ticket": 5,
+      "status": "Active"
+    },
+    {
+      "name": "Training Schedule",
+      "department": "Learning & Development",
+      "description": "Schedules and tracks employee training sessions.",
+      "division": "Workflow Division",
+      "ticket": 22,
+      "status": "Inactive"
+    },
+    {
+      "name": "Inventory Restock",
+      "department": "Operations",
+      "description": "Handles restocking inventory and supply chain checks.",
+      "division": "Workflow Division",
+      "ticket": 14,
+      "status": "Active"
+    },
+    {
+      "name": "Incident Management",
+      "department": "Risk Management",
+      "description": "Manages reporting and resolution of incidents.",
+      "division": "Workflow Division",
+      "ticket": 18,
+      "status": "Active"
+    },
+    {
+      "name": "Software License Renewal",
+      "department": "IT",
+      "description": "Tracks renewal of software licenses.",
+      "division": "Workflow Division",
+      "ticket": 9,
+      "status": "Disabled"
+    },
+    {
+      "name": "Remote Work Setup",
+      "department": "Admin",
+      "description": "Coordinates remote work equipment and access.",
+      "division": "Workflow Division",
+      "ticket": 11,
+      "status": "Inactive"
+    },
+    {
+      "name": "Internal Audit Process",
+      "department": "Compliance",
+      "description": "Steps for conducting internal audits.",
+      "division": "Workflow Division",
+      "ticket": 6,
+      "status": "Active"
+    },
+    {
+      "name": "Customer Feedback Loop",
+      "department": "Customer Experience",
+      "description": "Collects and processes customer feedback.",
+      "division": "Workflow Division",
+      "ticket": 16,
+      "status": "Active"
+    },
+    {
+      "name": "Annual Report Preparation",
+      "department": "Corporate Affairs",
+      "description": "Manages creation of the annual corporate report.",
+      "division": "Workflow Division",
+      "ticket": 4,
+      "status": "Disabled"
+    },
+    {
+      "name": "Sales Pipeline Review",
+      "department": "Sales",
+      "description": "Reviews progress and performance of sales pipelines.",
+      "division": "Workflow Division",
+      "ticket": 13,
+      "status": "Active"
+    },
+    {
+      "name": "Security Patch Deployment",
+      "department": "Cybersecurity",
+      "description": "Plans and executes deployment of security patches.",
+      "division": "Workflow Division",
+      "ticket": 21,
+      "status": "Active"
+    }
   ],
   "archive": [
     {

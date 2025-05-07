@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import AdminNav from "../../../components/navigations/admin-nav/AdminNav";
 import TitleCard from "../../../components/TitleCard";
 
-import style from "./Workflow.module.css";
+import style from "./WorkflowCreator.module.css";
 import forms from "../../../forms.module.css";
-import WorkflowTable from "../../../tables/admin/workflow/Workflow";
+import CreateStep from "./components/createstep";
+import WorkflowSteps from "./components/stepcard";
 
-export default function Workflow() {
+export default function WorkflowEditor() {
   const navigate = useNavigate();
 
   return (
@@ -17,20 +18,20 @@ export default function Workflow() {
         <section>
           <div className={style.title}>
             <TitleCard 
-              title="Workflow"
+              title="Workflow Creator"
               name="jessa"
             />
-            <button 
-              className={forms.button}
-              onClick={() => navigate("/admin/workflow/create")}
-            >
-              Create Workflow
-            </button>
           </div>
           <hr />
         </section>
-        <section>
-          <WorkflowTable/>
+        <section className={style.whole}>
+          <div className={style.step}>
+            <WorkflowSteps/>
+          </div>
+          <div className={style.configure}>
+            <CreateStep/>
+          </div>
+
         </section>
       </main>
     </>

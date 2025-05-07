@@ -17,6 +17,7 @@ import Workflow from '../pages/admin/workflow-page/Workflow';
 import Agent from '../pages/admin/agent-page/Agent';
 import AdminArchive from '../pages/admin/archive-page/AdminArchive';
 import AgentInvite from '../pages/admin/agent-page/AgentInvite';
+import WorkflowEditor from '../pages/admin/workflow-page/WorkflowCreator';
 
 
 function MainRoutes(){
@@ -37,6 +38,7 @@ function MainRoutes(){
     <Route path="/admin/agent/invite" element={<AgentInvite/>}/>
     <Route path="/admin/agent" element={<Agent />}/>
     <Route path="/admin/workflow" element={<Workflow />}/>
+    <Route path="/admin/workflow/create" element={<WorkflowEditor />}/>
     <Route path="/admin/archive" element={<AdminArchive />}/>
 
     {/* Error Page */}
