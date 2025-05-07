@@ -3,6 +3,9 @@ import { useState } from 'react';
 
 import styles from "./admin-nav.module.css";
 
+// comp
+import DateBanner from '../datetime-banner/DateBanner';
+
 
 export default function AdminNav() {
 
@@ -28,7 +31,8 @@ export default function AdminNav() {
     };
 
   return(
-    <nav className={styles.navBar}> 
+    <>
+        <nav className={styles.navBar}> 
       <div className={styles.logoSection}> 
         <div className={styles.logoImg}></div>
         <span>DTS</span>
@@ -65,5 +69,7 @@ export default function AdminNav() {
         <img className={styles.userAvatar} src="https://i.pinimg.com/736x/e6/50/7f/e6507f42d79520263d8d952633cedcf2.jpg" alt="Anime Avatar"onClick={handleAvatarClick}></img>
       </div>
     </nav>
+    <DateBanner className="adminNav"/>
+    </>
   )
 }
