@@ -69,49 +69,72 @@ function Title(props) {
   )
 }
 
-function Filters() {
-  return(
-    <>
+function Filters({ statusFilters, setStatusFilters, resetFilters }) {
+  const toggleStatus = (key) => {
+    setStatusFilters(prev => ({ ...prev, [key]: !prev[key] }));
+  };
+
+  return (
     <div className={layout.filters}>
-
-        <div className={layout.title}>
-            <b>
-                <p>Filter</p>
-            </b>
-                <p
-                style={{color: 'red'}}
-                >Reset</p>
-        </div>
-        <hr/>
-        <Title title='Status'/>
-        
-        <div className={layout.row}>
-          <p>Approved</p>
-          <input type="checkbox" id="option1" />
-        </div>
-        <div className={layout.row}>
-          <p>Rejected</p>
-          <input type="checkbox" id="option2" />
-        </div>
-        <hr/>
-
-
-        <Title title='Date Range'/>
+      <div className={layout.title}>
+        <b><p>Filter</p></b>
+        <p style={{ color: 'red', cursor: 'pointer' }} onClick={resetFilters}>Reset</p>
+      </div>
+      <hr />
+      <Title title='Status' />
+      <div className={layout.row}>
+        <p>resolved</p>
+        <input type="checkbox" checked={statusFilters.approved} onChange={() => toggleStatus('resolved')} />
+      </div>
+      <div className={layout.row}>
+        <p>cancelled</p>
+        <input type="checkbox" checked={statusFilters.cancelled} onChange={() => toggleStatus('cancelled')} />
+      </div>
+      <hr />
+      {/* Additional filters like DateRange can be added similarly */}
+      <Title title='Date Range'/>
         <Dropdown title='Start Date'/>
         <Dropdown title='End Date'/>
-        <Title title='Department'/>
-        <Dropdown/>
-        <hr/>
     </div>
-    </>
-  )
+  );
 }
 
 function AgentInvitation() {
+  const [statusFilters, setStatusFilters] = useState({
+    resolved: false,
+    cancelled: false,
+  });
+
+  const [searchQuery, setSearchQuery] = useState("");
   const [agents, setAgents] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 7; // rows per page
+  const itemsPerPage = 7;
 
+  const resetFilters = () => {
+    setStatusFilters({ resolved: false, cancelled: false });
+    setSearchQuery("");
+  };
+
+  // Filtered data
+  const filteredAgents = agents.filter((agent) => {
+    const matchesStatus =
+      (statusFilters.resolved && agent.status === "resolved") ||
+      (statusFilters.cancelled && agent.status === "cancelled") ||
+      (!statusFilters.resolved && !statusFilters.cancelled);
+
+    const matchesSearch =
+      agent.ticket_id?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      agent.subject?.toLowerCase().includes(searchQuery.toLowerCase());
+
+    return matchesStatus && matchesSearch;
+  });
+
+  // Pagination logic on filtered data
+  const totalPages = Math.ceil(filteredAgents.length / itemsPerPage);
+  const start = (currentPage - 1) * itemsPerPage;
+  const pagedAgents = filteredAgents.slice(start, start + itemsPerPage);
+
+  // Fetching data
   useEffect(() => {
     axios
       .get(`${ticketURL}`)
@@ -124,50 +147,51 @@ function AgentInvitation() {
       });
   }, []);
 
-  // pagination calculations
-  const totalPages = Math.ceil(agents.length / itemsPerPage);
-  const start = (currentPage - 1) * itemsPerPage;
-  const pagedAgents = agents.slice(start, start + itemsPerPage);
-
   const handleManage = (id) => {
     console.log("Manage agent", id);
   };
 
   return (
     <div className={layout.whole}>
-        <Filters/>
-        <div className={layout.right}>
-            <SearchBar/>
-            <div className={table.tableborder}>
-            <div className={table.tablewrapper}>
-                <table className={table.tablecontainer}>
-                <thead>
-                    <TableHeader />
-                </thead>
-                <tbody>
-                    {pagedAgents.map((agent) => (
-                    <TableRow
-                        Name={agent.ID}
-                        ID={agent.ID}
-                        TicketID={agent.ticket_id}
-                        Customer={agent.customer}
-                        Status={agent.status}
-                        Subject={agent.subject}
-                        ResolvedOn={agent.resolved_on}
-                        ResolvedBy={agent.resolved_by}
-                        onManage={handleManage}
-                    />
-                    ))}
-                </tbody>
-                </table>
-            </div>
-                <Pagination
-                currentPage={currentPage}
-                totalPages={totalPages}
-                setCurrentPage={setCurrentPage}
-                />
-            </div>
+      <Filters
+        statusFilters={statusFilters}
+        setStatusFilters={setStatusFilters}
+        resetFilters={resetFilters}
+      />
+
+      <div className={layout.right}>
+        <SearchBar onSearch={setSearchQuery} />
+        <div className={table.tableborder}>
+          <div className={table.tablewrapper}>
+            <table className={table.tablecontainer}>
+              <thead>
+                <TableHeader />
+              </thead>
+              <tbody>
+                {pagedAgents.map((agent) => (
+                  <TableRow
+                    key={agent.ID}
+                    Name={agent.ID}
+                    ID={agent.ID}
+                    TicketID={agent.ticket_id}
+                    Customer={agent.customer}
+                    Status={agent.status}
+                    Subject={agent.subject}
+                    ResolvedOn={agent.resolved_on}
+                    ResolvedBy={agent.resolved_by}
+                    onManage={handleManage}
+                  />
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            setCurrentPage={setCurrentPage}
+          />
         </div>
+      </div>
     </div>
   );
 }

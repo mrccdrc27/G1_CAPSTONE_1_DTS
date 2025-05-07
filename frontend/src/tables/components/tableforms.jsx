@@ -2,29 +2,52 @@ import styles from './tableforms.module.css'
 import form from './general-form.module.css'
 
 export function Pagination({ currentPage, totalPages, setCurrentPage }) {
-    return (
-      <div  className={styles.paginationControls}>
-        <button
-        className={`${form.circlebutton} ${form.btn}`}
-          disabled={currentPage === 1}
-          onClick={() => setCurrentPage((prev) => prev - 1)}
-        >
-            {'<'}
-        </button>
-  
-        <span className={styles.text}>
-            Page {currentPage} of {totalPages}
-        </span>
-  
-        <button
-        className={`${form.circlebutton} ${form.btn}`}
-          disabled={currentPage === totalPages}
-          onClick={() => setCurrentPage((prev) => prev + 1)}
-        >
-            {'>'}
-        </button>
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+
+  return (
+      <div className={styles.paginationControls} style={{ display: 'flex', gap: '8px' }}>
+          <button
+              className={`${form.circlebutton} ${form.btn}`}
+              disabled={currentPage === 1}
+              onClick={() => setCurrentPage(currentPage - 1)}
+          >
+              {'<'}
+          </button>
+
+          {pages.map((page) => (
+              <button
+                  key={page}
+                  className={`${form.circlebutton} ${form.btn} ${currentPage === page ? styles.activePage : ''}`}
+                  onClick={() => setCurrentPage(page)}
+                  style={{
+                      padding: '6px 12px',
+                      borderRadius: '5px',
+                      fontWeight: currentPage === page ? 'bold' : 'normal',
+                      cursor: 'pointer',
+                      transition: 'background-color 0.2s ease',
+                      backgroundColor: currentPage === page ? '#007bff' : 'transparent',
+                      color: currentPage === page ? '#fff' : '#000',
+                  }}
+                  onMouseEnter={(e) => {
+                      if (currentPage !== page) e.currentTarget.style.backgroundColor = '#f0f0f0';
+                  }}
+                  onMouseLeave={(e) => {
+                      if (currentPage !== page) e.currentTarget.style.backgroundColor = 'transparent';
+                  }}
+              >
+                  {page}
+              </button>
+          ))}
+
+          <button
+              className={`${form.circlebutton} ${form.btn}`}
+              disabled={currentPage === totalPages}
+              onClick={() => setCurrentPage(currentPage + 1)}
+          >
+              {'>'}
+          </button>
       </div>
-    );
+  );
 }
 
 export function RecentTask (props) {
@@ -45,21 +68,20 @@ export function RecentTask (props) {
 }
 
 // Non-functional Props
-export function SearchBar(props) {
-    return (
-        <div className={form.FormContainer}>
-            <div className={form.SearchBarContainer}>
-                    <i class="fas fa-search"
-                    style={{paddingRight:'10px'}}></i>       
-                <input 
-                    className={form.SearchBar}
-                    type="text" 
-                    placeholder="Search by ticket ID or keywords..." />
-            </div>
-            {/* <button
-            className={form.btn}>Filter</button> */}
-        </div>
-    )
+export function SearchBar({ onSearch }) {
+  return (
+    <div className={form.FormContainer}>
+      <div className={form.SearchBarContainer}>
+        <i className="fas fa-search" style={{ paddingRight: '10px' }}></i>
+        <input
+          className={form.SearchBar}
+          type="text"
+          placeholder="Search by ticket ID or keywords..."
+          onChange={(e) => onSearch(e.target.value)}
+        />
+      </div>
+    </div>
+  );
 }
 
 export function Dropdown(props) {
