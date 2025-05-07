@@ -13,21 +13,21 @@ body {
 
 :root {
   /* Color */
-  --primary-color: #780000;
-  --secondary-color: #063A84;
-  --background-color: #fcfcfc;
-  --text-color: #242424;
-  --label-color: #666;
-  --accent-color: #FFB800;
-  --success-color: #49C564;
-  --error-color: #AE131B;
-  --information-color: #063A84; 
-  --warning-color: #FFEB38;
-  --neutral-color: #424242;
-  --alert-color: #FF9800;
-  --button-color: #3498DB;
-  --border-color: #e0e0e0;
-  --admin-color: #3498DB;
+    --primary-color: #780000;
+    --secondary-color: #063A84;
+    --background-color: #fcfcfc;
+    --text-color: #242424;
+    --label-color: #666;
+    --accent-color: #FFB800;
+    --success-color: #49C564;
+    --error-color: #AE131B;
+    --information-color: #063A84; 
+    --warning-color: #FFEB38;
+    --neutral-color: #424242;
+    --alert-color: #FF9800;
+    --button-color: #3498DB;
+    --border-color: #e0e0e0;
+    --admin-color: #3498DB;
 
     /* Font sizes */
     --default-font-size: 0.875rem; /* 14 */
@@ -43,4 +43,9 @@ body {
 
     /* Design */
     --border-bottom: 1px solid #ddd;
+
+    /* admin stuff */
+    --borderColor: #424242;
+    --adminColor: #1E4379;
+    --tableShade: #c2c2c2;
 }
