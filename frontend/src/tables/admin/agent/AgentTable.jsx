@@ -26,10 +26,10 @@ function TableHeader() {
           }}>Photo</th>
         <th className={table.th} style={{ width: '20%' }}>Name</th>
         <th className={table.th} style={{ width: '20%' }}>Email</th>
-        <th className={table.th} style={{ width: '20%' }}>Department</th>
+        <th className={table.th} style={{ width: '10%' }}>Department</th>
         <th className={table.th} style={{ width: '10%' }}>Role</th>
-        <th className={table.th} style={{ width: '10%' }}>Status</th>
-        <th className={table.th} style={{ width: '20%' }}>Last Login</th>
+        <th className={table.th} style={{ width: '15%' }}>Status</th>
+        <th className={table.th} style={{ width: '15%' }}>Last Login</th>
         <th className={table.th} style={{ width: '10%',
            display: 'table-cell', 
            textAlign: 'center', 
@@ -39,22 +39,18 @@ function TableHeader() {
   )
 }
 
+import { formatDistanceToNow, parseISO } from 'date-fns';
+
 function TableRow(props) {
-  return(
+  const formattedLastLogin = props.LastLogin 
+    ? formatDistanceToNow(parseISO(props.LastLogin), { addSuffix: true }) 
+    : '—';
+
+  return (
     <tr className={table.tr}>
-      <td className={table.td} 
-        style={{ 
-          display: 'table-cell', 
-          textAlign: 'center', 
-          verticalAlign: 'middle' 
-        }}>
-          <img src="https://wonderfulengineering.com/wp-content/uploads/2014/10/image-wallpaper-15.jpg"  
-              style={{ 
-                display: 'block', 
-                margin: 'auto',
-                height: '30px',
-                width: '30px',
-                borderRadius: '50px' }} />
+      <td className={table.td} style={{ display: 'table-cell', textAlign: 'center', verticalAlign: 'middle' }}>
+        <img src={props.image}
+          style={{ display: 'block', margin: 'auto', height: '40px', width: '40px', borderRadius: '50px' }} />
       </td>
       <td className={table.td}>{props.Name}</td>
       <td className={table.td}>{props.Email}</td>
@@ -63,18 +59,12 @@ function TableRow(props) {
       <td className={table.td}>
         <AgentStatus status={props.Status}/>
       </td>
-      <td className={table.td}>{props.LastLogin || '—'}</td>
-
-      <td className={table.td}
-      style={{
-        display: 'table-cell',
-        textAlign: 'center'
-      }}>
-        <i class="fa-solid fa-user-pen"></i>
+      <td className={table.td}>{formattedLastLogin}</td>
+      <td className={table.td} style={{ display: 'table-cell', textAlign: 'center' }}>
+        <i className="fa-solid fa-user-pen"></i>
       </td>
-
     </tr>
-  )
+  );
 }
 
 function Filters() {
@@ -92,7 +82,8 @@ function Filters() {
 function AgentTable() {
   const [agents, setAgents] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 7; // rows per page
+  const [showFilters, setShowFilters] = useState(false); // toggle state
+  const itemsPerPage = 7;
 
   useEffect(() => {
     axios
@@ -106,7 +97,6 @@ function AgentTable() {
       });
   }, []);
 
-  // pagination calculations
   const totalPages = Math.ceil(agents.length / itemsPerPage);
   const start = (currentPage - 1) * itemsPerPage;
   const pagedAgents = agents.slice(start, start + itemsPerPage);
@@ -117,35 +107,46 @@ function AgentTable() {
 
   return (
     <div className={table.whole}>
-      <SearchBar/>
-      <Filters/>
+      <SearchBar />
+
+      {/* Filter Toggle Button */}
+      <div style={{ marginBottom: '1rem' }}>
+        <button onClick={() => setShowFilters(!showFilters)}>
+          {showFilters ? 'Hide Filters' : 'Show Filters'}
+        </button>
+      </div>
+
+      {/* Conditional Filters Section */}
+      {showFilters && <Filters />}
+
       <div className={table.tableborder}>
         <div className={table.tablewrapper}>
-            <table className={table.tablecontainer}>
-              <thead>
-                <TableHeader />
-              </thead>
-              <tbody>
-                {pagedAgents.map((agent) => (
-                  <TableRow
-                    key={agent.ID}
-                    ID={agent.ID}
-                    Name={agent.Name}
-                    Email={agent.Email}
-                    Role={agent.Role}
-                    Status={agent.Status}
-                    LastLogin={agent.LastLogin}
-                    onManage={handleManage}
-                  />
-                ))}
-              </tbody>
-            </table>
+          <table className={table.tablecontainer}>
+            <thead>
+              <TableHeader />
+            </thead>
+            <tbody>
+              {pagedAgents.map((agent) => (
+                <TableRow
+                  key={agent.ID}
+                  ID={agent.ID}
+                  Name={agent.Name}
+                  Email={agent.Email}
+                  image={agent.ImageURL}
+                  Role={agent.Role}
+                  Status={agent.Status}
+                  LastLogin={agent.LastLogin}
+                  onManage={handleManage}
+                />
+              ))}
+            </tbody>
+          </table>
         </div>
         <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        setCurrentPage={setCurrentPage}
-      />
+          currentPage={currentPage}
+          totalPages={totalPages}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </div>
   );

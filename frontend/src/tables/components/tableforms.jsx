@@ -56,8 +56,8 @@ export function SearchBar(props) {
                     type="text" 
                     placeholder="Search by ticket ID or keywords..." />
             </div>
-            <button
-            className={form.btn}>Filter</button>
+            {/* <button
+            className={form.btn}>Filter</button> */}
         </div>
     )
 }
@@ -81,33 +81,52 @@ export function Dropdown(props) {
 }
 
 export function AgentStatus({ status }) {
-    // Define colors for different statuses
-    const statusColors = {
-        'Active': 'green',
-        'Pending': 'gray',
-        'Suspended': 'red',
-        'Inactive': 'gray',
-        'Disabled': 'red',
-        'resolved':'green',
-        'cancelled':'red',
-    };
-
+    const normalizedStatus = status?.toLowerCase();
+  
+    const greenStatuses = ['active', 'closed', 'resolved'];
+    const grayStatuses = ['pending', 'inactive'];
+    const redStatuses = ['suspended', 'escalated', 'disabled', 'cancelled'];
+    const orangeStatuses = ['reopened'];
+  
+    let bgColor = '#E0F7EF';
+    let textColor = '#2E7D32';
+    let iconClass = 'fa-solid fa-circle-check';
+  
+    if (grayStatuses.includes(normalizedStatus)) {
+      bgColor = '#ECECEC';
+      textColor = '#424242';
+      iconClass = 'fa-solid fa-circle-pause';
+    } else if (redStatuses.includes(normalizedStatus)) {
+      bgColor = '#FFE5E5';
+      textColor = '#C62828';
+      iconClass = 'fa-solid fa-circle-exclamation';
+    } else if (orangeStatuses.includes(normalizedStatus)) {
+      bgColor = '#FFF3E0';
+      textColor = '#FF6F00';
+      iconClass = 'fa-solid fa-rotate-right';
+    }
+  
     return (
-        <div
+      <div
         style={{
-            height: '30%',
-            display: 'flex',
-            backgroundColor: statusColors[status] || 'blue', // Default color if status is unknown
-            borderRadius: '4px',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'white', // Ensures text is visible on dark backgrounds
-            padding: '12px',
-            width: 'auto', // Corrected syntax
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '8px',
+          backgroundColor: bgColor,
+          color: textColor,
+          borderRadius: '20px',
+          padding: '6px 12px',
+          fontWeight: '500',
+          fontSize: '0.875rem',
+          textTransform: 'capitalize',
+          width: 'fit-content',
+          boxShadow: '0 0 4px rgba(0,0,0,0.05)'
         }}
-        >
-            {status}
-        </div>
+      >
+        <i className={iconClass}></i>
+        {normalizedStatus}
+      </div>
     );
-}
+  }
+  
 

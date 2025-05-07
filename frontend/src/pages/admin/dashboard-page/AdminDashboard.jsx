@@ -11,6 +11,10 @@ export default function AgentDashboard() {
     <>    
     <AdminNav />
       <main className={style.main}>
+        <section className={style.dashboardTopSection}>
+          <div className={style.dbHeroSection}>
+          </div>
+        </section> {/* top */}
         <section>
           <div className={style.title}>
             <TitleCard 

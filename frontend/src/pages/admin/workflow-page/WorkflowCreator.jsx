@@ -16,6 +16,13 @@ export default function WorkflowEditor() {
       <AdminNav />
       <main className={style.main}>
         <section>
+          <i class="fa-solid fa-angle-left"
+          style={{
+              fontSize:'30px',
+              color:'blue'
+          }}
+          onClick={() => navigate("/admin/workflow")}
+          />
           <div className={style.title}>
             <TitleCard 
               title="Workflow Creator"
