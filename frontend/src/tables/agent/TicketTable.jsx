@@ -8,41 +8,44 @@ const ticketURL = import.meta.env.VITE_TICKET_API;
 // react 
 import React, { useState, useEffect } from 'react';
 import axios, { all } from 'axios';
+import { Link } from 'react-router-dom';
 
 // comp
 import { Dropdown, SearchBar } from '../components/General';
 
 export function TicketHeader() {
   return(
-    <tr className={table.header}>
-      <th className={table.th}>Ticket No.</th>
-      <th className={table.th}>Subject</th>
-      <th className={table.th}>Customer</th>
-      <th className={table.th}>Priority</th>
-      <th className={table.th}>Opened On</th>
-      <th className={table.th}>SLA</th>
-      <th className={table.th}>Status</th>
-      <th className={table.th}>Action</th>
+    <tr className={general.header}>
+      <th className={general.th}>Ticket No.</th>
+      <th className={general.th}>Subject</th>
+      <th className={general.th}>Customer</th>
+      <th className={general.th}>Priority</th>
+      <th className={general.th}>Opened On</th>
+      <th className={general.th}>SLA</th>
+      <th className={general.th}>Status</th>
+      <th className={general.th}>Action</th>
     </tr>
   );
 }
 
 export function TicketItem({ ticket }) {
   return(
-    <tr className={table.item}>
-      <td className={table.ticketID}>{ticket.ticket_id}</td>
-      <td className={table.ticketSubject}>{ticket.subject}</td> 
-      <td className={table.tickeCustomer}>{ticket.customer}</td>
+    <tr className={general.item}>
+      <td className={general.ticketID}>{ticket.ticket_id}</td>
+      <td className={general.ticketSubject}>{ticket.subject}</td> 
+      <td className={general.tickeCustomer}>{ticket.customer}</td>
       <td>
         <div className={general[`priority-${ticket.priority.toLowerCase()}`]}>{ticket.priority}</div>
       </td>
-      <td className={table.ticketOpenedOn}>{ticket.opened_on}</td>
-      <td className={table.ticketSLA}>{ticket.sla}</td>
+      <td className={general.ticketOpenedOn}>{ticket.opened_on}</td>
+      <td className={general.ticketSLA}>{ticket.sla}</td>
       <td>
         <div className={general[`status-${ticket.status.replace(/\s+/g, '-').toLowerCase()}`]}>{ticket.status}</div>
       </td>
-      <td className={table.ticketButton}>
-        <button className={general.viewButton}>View</button>  {/* onClick={() => handleView(ticket.ticket_id)} */}
+      <td className={general.ticketButton}>
+        <Link to={`/agent/ticket/${ticket.ticket_id}`} state={{ ticket }}>
+          <button className={general.viewButton}>View</button>
+        </Link>
       </td> 
     </tr>
   );
@@ -88,13 +91,13 @@ export default function TicketTable() {
       });
   }, [])
 
-  if (loading) {
-    return <div>Loading...</div>;  
-  }
+  // if (loading) {
+  //   return <div>Loading...</div>;  
+  // }
 
-  if (error) {
-    return <div>{error}</div>;  
-  }
+  // if (error) {
+  //   return <div>{error}</div>;  
+  // }
 
   return(
     <div className={table.ticketTable}>
@@ -146,8 +149,8 @@ export default function TicketTable() {
           />
 
         </div>
-        <div className={table.ticketTableWrapper}>
-          <table className={table.ticketPageTable}>
+        <div className={general.ticketTableWrapper}>
+          <table className={general.ticketPageTable}>
             <thead>
               <TicketHeader />
             </thead>

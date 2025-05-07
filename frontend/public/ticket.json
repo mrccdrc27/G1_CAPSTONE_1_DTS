@@ -627,8 +627,86 @@
       "resolved_on": "2025-02-21",
       "resolved_by": "Carla Navarro"
     }
-  ]
+  ],
   
+  "archived_tickets": [
+  {
+    "id": 1,
+    "ticket_id": "TK-100312",
+    "subject": "Email Notifications Not Working",
+    "customer": "Linda Martin",
+    "priority": "Medium",
+    "status": "Resolved",
+    "opened_on": "April 5, 2025",
+    "sla": "48 hours",
+    "description": "Customer reported that they are not receiving email alerts.",
+    "department": "IT Services",
+    "position": "System Admin",
+    "resolved_on": "2025-04-06",
+    "resolved_by": "Alice Santos"
+  },
+  {
+    "id": 2,
+    "ticket_id": "TK-100313",
+    "subject": "Unable to Access VPN",
+    "customer": "James Peterson",
+    "priority": "High",
+    "status": "Resolved",
+    "opened_on": "April 6, 2025",
+    "sla": "24 hours",
+    "description": "User cannot connect to the corporate VPN from home.",
+    "department": "Network Operations",
+    "position": "Remote Engineer",
+    "resolved_on": "2025-04-06",
+    "resolved_by": "Carlos Mendoza"
+  },
+  {
+    "id": 3,
+    "ticket_id": "TK-100314",
+    "subject": "Software Installation Request",
+    "customer": "Nina Brooks",
+    "priority": "Low",
+    "status": "Closed",
+    "opened_on": "April 7, 2025",
+    "sla": "72 hours",
+    "description": "Requested installation of Adobe Photoshop for marketing work.",
+    "department": "Marketing",
+    "position": "Graphic Designer",
+    "resolved_on": "2025-04-10",
+    "resolved_by": "Jasmine Koh"
+  },
+  {
+    "id": 4,
+    "ticket_id": "TK-100315",
+    "subject": "System Crash During Update",
+    "customer": "Omar Singh",
+    "priority": "Critical",
+    "status": "Resolved",
+    "opened_on": "April 7, 2025",
+    "sla": "8 hours",
+    "description": "Laptop crashed while applying the latest OS security patch.",
+    "department": "IT Services",
+    "position": "Support Specialist",
+    "resolved_on": "2025-04-07",
+    "resolved_by": "Mei Chen"
+  },
+  {
+    "id": 5,
+    "ticket_id": "TK-100316",
+    "subject": "Password Reset Loop",
+    "customer": "Elena Morales",
+    "priority": "Medium",
+    "status": "Resolved",
+    "opened_on": "April 8, 2025",
+    "sla": "24 hours",
+    "description": "User is being prompted to reset password repeatedly despite successful change.",
+    "department": "Human Resources",
+    "position": "HR Coordinator",
+    "resolved_on": "2025-04-08",
+    "resolved_by": "Daniel Price"
+  }
+  ]
+
   }
   
   
