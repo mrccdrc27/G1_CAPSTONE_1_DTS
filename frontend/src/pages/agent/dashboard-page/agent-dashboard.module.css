@@ -79,7 +79,9 @@
 }
 
 .dbTicketSection {
-  /*  */
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  /* background-color: green; */
 }
 
 .dbTicketSection h3 {
@@ -108,7 +110,16 @@
     gap: 5px;
   }
 
+  .dbUpcomingTicketSection {
+    margin-bottom: 20px;
+  }
+
   .dbRightSection {
     flex: 1;
   }
+
+  .dbTicketSection {
+    margin-bottom: 70px;
+  }
+
 }
