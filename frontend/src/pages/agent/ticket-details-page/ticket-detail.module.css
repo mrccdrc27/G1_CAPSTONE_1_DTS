@@ -126,15 +126,9 @@
   font-size: var(--table-font-size);
 }
 
-.commentActions {
-  display: flex;
-  gap: 10px;
-}
-
 .commentAction {
   padding-right: 10px;
   font-size: var(--table-font-size);
-  cursor: pointer;
 }
 
 .rightTicketDetails {
@@ -205,24 +199,6 @@
 
 .tdActivityLogContent {
   font-size: var(--table-head-size);
-}
-
-.activityTitle {
-  font-weight: bold;
-}
-
-.activityText {
-  margin-bottom: 5px;
-}
-
-.activityFooter {
-  font-style: italic;
-  color: #666;
-  font-size: 0.9em;
-}
-
-.ticketActionSection {
-  margin-bottom: 20px;
 }
 
 @media (max-width: 768px) {
