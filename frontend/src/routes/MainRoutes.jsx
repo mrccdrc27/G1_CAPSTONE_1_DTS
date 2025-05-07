@@ -10,6 +10,7 @@ import Track from '../pages/agent/track-page/Track';
 import AgentArchive from '../pages/agent/archive-page/AgentArchive';
 import AgentLogin from '../pages/auth/agent/AgentLogin';
 import AgentProfile from '../pages/agent/profile-page/AgentProfile';
+// import TicketDetail from '../pages/agent/ticket-details-page/TicketDetail';
 
 // Import Admin Pages
 import AdminDashboard from '../pages/admin/dashboard-page/AdminDashboard';
@@ -32,6 +33,9 @@ function MainRoutes(){
     <Route path="/agent/track" element={<Track />}/>
     <Route path="/agent/archive" element={<AgentArchive />}/>
     <Route path="/agent/profile" element={<AgentProfile />}/>
+
+    {/* Ticket Page */}
+    {/* <Route path="/agent/ticket/:id" element={<TicketDetail />} /> */}
 
     {/* Admin */}
     <Route path="/admin" element={<AdminDashboard />}/>
