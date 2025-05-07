@@ -11,6 +11,7 @@ import axios from 'axios';
 
 // comp
 import AgentNav from '../../../components/navigations/agent-nav/AgentNav';
+import TicketAction from '../../../components/modals/ticket-action/TicketAction';
 
 // api
 const ticketURL = import.meta.env.VITE_TICKET_API;
@@ -21,6 +22,9 @@ export default function TicketDetail() {
   const navigate = useNavigate();
 
   const [ticket, setTicket] = useState(location.state?.ticket || null);
+
+  // open ticket action modal
+  const [openTicketAction, setOpenTicketAction] = useState(false);
 
   useEffect(() => {
     if (!ticket) {
@@ -43,9 +47,12 @@ export default function TicketDetail() {
     <AgentNav />
     <main className={styles.ticketDetailPage}>
       {/* Modal */}
-      {/* {openTicketAction && <div className="ticket-action-section">
-        <TicketAction closeTicketAction={setOpenTicketAction} />
-        </div> }  */}
+      {openTicketAction && <div className="ticket-action-section">
+        <TicketAction 
+          closeTicketAction={setOpenTicketAction}
+          ticket={ticket}
+          />
+        </div> } 
       <div className={styles.topTicketDetail}>
         <button className={styles.backButton} onClick={() => navigate(-1)}>Back</button>
       </div>
@@ -99,7 +106,6 @@ export default function TicketDetail() {
             className={styles.actionButton}
             onClick={() => {
               setOpenTicketAction(true);
-              handleView(ticket.ticket_id);
             }}
           >
             Make an Action

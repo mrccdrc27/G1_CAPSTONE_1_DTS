@@ -4,6 +4,9 @@ import { useState } from 'react';
 import styles from "./admin-nav.module.css";
 import DateBanner from '../datetime-banner/DateBanner';
 
+// comp
+import DateBanner from '../datetime-banner/DateBanner';
+
 
 export default function AdminNav() {
 
@@ -30,8 +33,7 @@ export default function AdminNav() {
 
   return(
     <>
-    
-    <nav className={styles.navBar}> 
+        <nav className={styles.navBar}> 
       <div className={styles.logoSection}> 
         <div className={styles.logoImg}></div>
         <span>DTS</span>

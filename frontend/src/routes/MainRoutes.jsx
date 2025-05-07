@@ -11,6 +11,7 @@ import AgentArchive from '../pages/agent/archive-page/AgentArchive';
 import AgentLogin from '../pages/auth/agent/AgentLogin';
 import AgentProfile from '../pages/agent/profile-page/AgentProfile';
 import TicketDetail from '../pages/agent/ticket-details-page/TicketDetail';
+import Profile from '../pages/auth/profile/Profile';
 
 // Import Admin Pages
 import AdminDashboard from '../pages/admin/dashboard-page/AdminDashboard';
@@ -32,10 +33,13 @@ function MainRoutes(){
     <Route path="/agent/ticket" element={<Ticket />}/>
     <Route path="/agent/track" element={<Track />}/>
     <Route path="/agent/archive" element={<AgentArchive />}/>
-    <Route path="/agent/profile" element={<AgentProfile />}/>
+    <Route path="/profile" element={<AgentProfile />}/>
 
     {/* Ticket Page */}
     <Route path="/agent/ticket/:id" element={<TicketDetail />} />
+
+    {/* Profile */}
+    <Route path="/agent/profile" element={<Profile />} />
 
     {/* Admin */}
     <Route path="/admin" element={<AdminDashboard />}/>
