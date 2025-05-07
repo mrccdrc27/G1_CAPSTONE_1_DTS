@@ -11,8 +11,8 @@ function UpcomingTicketItem({ticket}) {
         </td>
         <td className={`${styles.ticketCell} ${styles.subject}`}>{ticket.subject}</td>
         <td className={styles.ticketCell}>{ticket.userName}</td>
-        <td className={`${general.ticketCell} ${general[`priority-${ticket.priority.toLowerCase()}`]}`}>
-          <div className={general.priorityWrapper}>{ticket.priority}</div>
+        <td className={styles.ticketCell}>
+          <div className={general[`priority-${ticket.priority.toLowerCase()}`]}>{ticket.priority}</div>
         </td>
         <td className={styles.ticketCell}>{ticket.date}</td>
       </tr>

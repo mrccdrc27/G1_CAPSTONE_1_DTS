@@ -1,5 +1,6 @@
 import AgentNav from "../../../components/navigations/agent-nav/AgentNav"
 import CardStatus from "./components/CardStatus"
+import RecentUpdates  from "./components/RecentUpdates"
 
 import styles from './agent-dashboard.module.css'
 import UpcomingTicketTable from "../../../tables/agent/UpcomingTicketTable"
@@ -36,6 +37,7 @@ export default function AgentDashboard() {
         <div className={styles.dbRightSection}>
           <div className={styles.dbTicketSection}>
            <h3>Recent Updates</h3>
+           <RecentUpdates />
           </div>
         </div> {/* right */}
       </section> {/* bot */}
