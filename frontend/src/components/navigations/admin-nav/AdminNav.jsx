@@ -3,11 +3,6 @@ import { useState } from 'react';
 
 import styles from "./admin-nav.module.css";
 import DateBanner from '../datetime-banner/DateBanner';
-
-// comp
-import DateBanner from '../datetime-banner/DateBanner';
-
-
 export default function AdminNav() {
 
   // pa remove nalang if di need
