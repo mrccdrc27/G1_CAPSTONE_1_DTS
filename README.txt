@@ -8,5 +8,6 @@ npx json-server --watch public/db.json --port 5000
 - npm install axios
 - npm install -g json-server 
 - New-Item -Path . -Name ".env" -ItemType "file" // env
-- npm install axios
+- npm install lucide-react
+
 

@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 
 import styles from './agent-nav.module.css';
 
@@ -9,6 +9,7 @@ import NotifModal from '../../modals/notif-action/NotifModal';
 import ProfileModal from '../../modals/profile-action/ProfileModal';
 
 export default function AgentNav() {
+  const location = useLocation();
   const [openProfileModal, setOpenProfileModal] = useState(false);
   const [openNotifModal, setOpenNotifModal] = useState(false);
 
@@ -22,10 +23,37 @@ export default function AgentNav() {
     setOpenProfileModal(false);
   };
 
+  // modal close when the page is resize
+  useEffect(() => {
+    const handleResize = () => {
+      setOpenProfileModal(false); 
+      setOpenNotifModal(false);
+      setUserMenuOpen(false);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    // clean event listener
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); 
+
+  // Burger Menu
   const [menuOpen, setMenuOpen] = useState(false);
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+    setUserMenuOpen(false);
   };
+
+  // Three dots Menu
+  const [userMenuOpen, setUserMenuOpen] = useState(false); 
+  const toggleUserMenu = () => {
+    setUserMenuOpen(prev => !prev);
+    setMenuOpen(false);
+    setOpenProfileModal(false); 
+    setOpenNotifModal(false);
+  };  
 
   return (
     <>
@@ -36,12 +64,6 @@ export default function AgentNav() {
         <div className={styles.logoSection}>
           <div className={styles.logoImg}></div>
           <span>DTS</span>
-        </div>
-
-        <div className={styles.hamburger} onClick={toggleMenu}>
-          <div className={styles.bar}></div>
-          <div className={styles.bar}></div>
-          <div className={styles.bar}></div>
         </div>
 
         {/* nav-links */}
@@ -81,7 +103,7 @@ export default function AgentNav() {
           </NavLink>
         </div>
 
-        <div className={styles.userSection}>
+         <div className={`${styles.userSection} ${userMenuOpen ? styles.userSectionOpen : ''}`}> {/* className={styles.userSection} */}
           <p>Username</p>
           <div className={styles.notifBell} onClick={handleNotifClick}>
             <i className="fa fa-bell"></i>
@@ -92,7 +114,20 @@ export default function AgentNav() {
             alt="Anime Avatar"
             onClick={handleAvatarClick}
           />
+        </div> 
+
+         {/* Mobile view */}
+
+         <div className={styles.hamburger} onClick={toggleMenu}>
+          <div className={styles.bar}></div>
+          <div className={styles.bar}></div>
+          <div className={styles.bar}></div>
         </div>
+
+        <div className={styles.mobileDots} onClick={toggleUserMenu}>
+          <span>⋯</span>
+        </div>
+
       </nav>
       <DateBanner className="agentNav" />
     </>
