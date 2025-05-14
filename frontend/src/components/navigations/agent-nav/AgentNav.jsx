@@ -62,8 +62,11 @@ export default function AgentNav() {
 
       <nav className={styles.navBar}>
         <div className={styles.logoSection}>
-          <div className={styles.logoImg}></div>
-          <span>DTS</span>
+          <div className={styles.logoImg}>
+            <img src="/logotixx.png" alt="logo" />
+          </div>
+          <p>TickTrack</p>
+          {/* <span>TickTrack</span> */}
         </div>
 
         {/* nav-links */}
@@ -104,16 +107,19 @@ export default function AgentNav() {
         </div>
 
          <div className={`${styles.userSection} ${userMenuOpen ? styles.userSectionOpen : ''}`}> {/* className={styles.userSection} */}
-          <p>Username</p>
-          <div className={styles.notifBell} onClick={handleNotifClick}>
-            <i className="fa fa-bell"></i>
-          </div>
-          <img
-            className={styles.userAvatar}
-            src="https://i.pinimg.com/736x/e6/50/7f/e6507f42d79520263d8d952633cedcf2.jpg"
-            alt="Anime Avatar"
-            onClick={handleAvatarClick}
-          />
+            <div className={styles.notifBell} onClick={handleNotifClick}>
+              <i className="fa fa-bell"></i>
+            </div>
+            <img
+              className={styles.userAvatar}
+              src="https://i.pinimg.com/736x/e6/50/7f/e6507f42d79520263d8d952633cedcf2.jpg"
+              alt="Anime Avatar"
+              onClick={handleAvatarClick}
+            />
+            <div className={styles.nameSection}>
+              <p className={styles.name}>Username</p>
+              <p className={styles.role}>Agent Account</p>
+            </div>
         </div> 
 
          {/* Mobile view */}

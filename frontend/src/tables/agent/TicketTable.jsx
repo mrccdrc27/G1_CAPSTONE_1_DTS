@@ -49,7 +49,7 @@ export function TicketItem({ ticket }) {
       </td> 
     </tr>
   );
-}
+} 
 
 export default function TicketTable() {
   const [tickets, setTickets] = useState([]);
@@ -126,6 +126,8 @@ export default function TicketTable() {
             onClick={() => {
             setSelectedPriority('');
             setSelectedStatus('');
+            setStartDate('');
+            setEndDate('');
             // alert('Filter Reset!'); 
             }}>
             Reset

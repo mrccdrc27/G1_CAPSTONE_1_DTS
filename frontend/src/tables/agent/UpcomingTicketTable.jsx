@@ -44,7 +44,7 @@ export default function UpcomingTicketTable() {
         setLoading(false);
       });
   }, [])
-
+  
   return(
     <div className={styles.ticketTableWrapper}>
      {loading ? <p>Loading...</p> : error ? <p>{error}</p> : tickets.length === 0 ? <p>No upcoming ticket.</p> : (
