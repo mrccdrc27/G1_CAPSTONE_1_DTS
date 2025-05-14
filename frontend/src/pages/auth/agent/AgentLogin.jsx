@@ -7,12 +7,16 @@ function Login() {
   return (
     <div className={styles.loginPage}>
       <div className={styles.loginMainSection}>
-        <div className={styles.loginLeftSection}></div>
+        <div className={styles.loginLeftSection}>
+        </div>
+        
         <div className={styles.loginRightSection}>
           <div className={styles.loginTopHeader}>
-            <div className={styles.loginLogo}></div>
+            <div className={styles.loginLogo}>
+              <img src="/logotixx.png" alt="logo" />
+            </div>
             <div className={styles.loginTitle}>
-              <h3>Ticket<span>Pilot</span></h3>
+              <h3>Ticket<span>Flow</span></h3>
               <p>Flow-based Assignment & Ticket Tracking System</p>
             </div>
           </div>

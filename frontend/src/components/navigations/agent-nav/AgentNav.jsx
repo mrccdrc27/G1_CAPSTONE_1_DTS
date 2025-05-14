@@ -65,7 +65,7 @@ export default function AgentNav() {
           <div className={styles.logoImg}>
             <img src="/logotixx.png" alt="logo" />
           </div>
-          <p>TickTrack</p>
+          <p>TicketFlow</p>
           {/* <span>TickTrack</span> */}
         </div>
 

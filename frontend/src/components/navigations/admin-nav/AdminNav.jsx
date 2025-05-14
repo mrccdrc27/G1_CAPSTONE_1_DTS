@@ -61,7 +61,7 @@ export default function AdminNav() {
             <div className={styles.logoImg}>
               <img src="/logotixx.png" alt="logo" />
             </div>
-            <p>TickTrack</p>
+            <p>TicketFlow</p>
           </div>
 
       {/* nav-links */}
