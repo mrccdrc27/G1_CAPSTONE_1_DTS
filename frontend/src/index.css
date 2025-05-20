@@ -8,7 +8,7 @@
 }
 
 body {
-  background-color: var(--background-color);
+  background-color: var(--bg-color);
 }
 
 :root {
@@ -16,6 +16,8 @@ body {
     --primary-color: #780000;
     --secondary-color: #063A84;
     --background-color: #fcfcfc;
+    --bg-color: #F1F1F1;
+    --bg2-color: #FEFEFE;
     --text-color: #242424;
     --label-color: #666;
     --accent-color: #FFB800;

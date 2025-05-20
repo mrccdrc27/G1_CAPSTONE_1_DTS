@@ -70,8 +70,6 @@ export default function Track() {
           </form>
         </div>    {/* search */}
 
- 
-
         {notFound && (
             <div className={styles.SearchImageContainer}>
               <p>Sorry, we couldn't find a ticket with that ID. Please check and try again.</p>
@@ -80,7 +78,6 @@ export default function Track() {
           )}
 
         
-
         {!matchedTicket && !notFound && searchTerm.trim() === '' && (
           <div className={styles.SearchImageContainer}>
             <img src= "../../../../public/searching.svg" alt="Search placeholder" className={styles.SearchImage}/>

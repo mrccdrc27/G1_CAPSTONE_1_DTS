@@ -1,0 +1,148 @@
+
+.ticketDetailPage {
+  margin: var(--mainpagewidth);
+}
+
+.tdTopSection {
+  display: flex;
+  gap: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-bottom: var(--border-bottom);
+}
+
+.tdBack, .tdLabel p {
+  font-size: var(--title-font-size);
+  color: var(--text-color);
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+
+.tdBotSection {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.tdLeftSection {
+  flex: 2;
+  background-color: var(--background-color);
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.tdHeader {
+  color: var(--text-color);
+  margin-bottom: 40px;
+}
+
+.tdTitle, .tdSubject {
+  font-size: var(--h1-font-size);
+}
+
+.tdMetaData {
+  margin-top: 5px;
+}
+
+.tdDateOpened, .tdDateResolution {
+  font-size: var(--table-font-size);
+  color: var(--text-color);
+}
+
+.tdDescription {
+  font-size: var(--table-font-size);
+  color: var(--text-color);
+  margin-bottom: 20px;
+}
+
+.tdAttachment {
+  font-size: var(--table-font-size);
+  color: var(--text-color);
+  margin-bottom: 20px;
+  /* margin-bottom: 50px; */
+}
+
+.tdAttached {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tdAttached i {
+  color: #007bff;
+}
+
+.tdComment {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding-bottom: 50px;
+  border-bottom: var(--border-bottom);
+}
+
+.tdUserProfile img{
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.tdCommentInput {
+  border: var(--border-bottom);
+  border-radius: 4px;
+  padding: 10px;
+  width: 100%;
+}
+
+.tdCommentSection {
+  /* background-color: pink; */
+  margin-top: 20px;
+}
+
+.tdCommentSection h3 {
+  margin-bottom: 20px;
+  color: var(--information-color);
+}
+
+.tdCommentSection {
+  font-size: var(--table-font-size);
+  color: var(--text-color);
+}
+
+.tdCommentItem {
+  display: flex;
+  gap: 20px;
+}
+
+.tdCommentHeader {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+}
+
+.tdCommentContent {
+  margin-bottom: 5px;
+}
+
+.tdCommentActions {
+  display: flex;
+  font-weight: bold;
+  gap: 10px;
+}
+
+.tdRightSection {
+  flex: 1;
+  background-color: var(--background-color);
+  border-radius: 4px;
+  padding: 20px;
+}
+
+@media (max-width: 768px) {
+  .tdLeftSection,
+  .tdRightSection {
+    flex: 1 1 100%;
+    min-width: unset;
+  }
+}

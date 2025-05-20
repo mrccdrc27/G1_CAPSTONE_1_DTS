@@ -1,12 +1,19 @@
 import { NavLink, useLocation } from 'react-router-dom'
-import { useState, useEffect } from 'react'; 
+import { useState, useEffect, useRef } from 'react'; 
 
+// style
 import styles from "./admin-nav.module.css";
+
+// components
 import DateBanner from '../datetime-banner/DateBanner';
+import NotifModal from '../../modals/notif-action/NotifModal';
+import ProfileModal from '../../modals/profile-action/ProfileModal';
+
 export default function AdminNav() {
   const location = useLocation();
+  const [openProfileModal, setOpenProfileModal] = useState(false);
+  const [openNotifModal, setOpenNotifModal] = useState(false);
 
-  // pa remove nalang if di need
     const handleAvatarClick = () => {
       setOpenProfileModal(prevState => !prevState)
       setOpenNotifModal(false); // close notif modal if open
@@ -17,12 +24,12 @@ export default function AdminNav() {
       setOpenProfileModal(false); // close profile modal if open
     };
 
-    // pa remove nalang if di need
-
+    // modal close when the page is resize
     useEffect(() => {
         const handleResize = () => {
           setUserMenuOpen(false);
-          setMenuOpen(false)
+          setOpenProfileModal(false); 
+          setOpenNotifModal(false);
         };
     
         window.addEventListener('resize', handleResize);
@@ -49,9 +56,40 @@ export default function AdminNav() {
       setOpenNotifModal(false);
     };  
 
+    // Click outside the modal
+    const notifRef = useRef(null);
+    const profileRef = useRef(null);
+  
+    useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (openNotifModal && notifRef.current && !notifRef.current.contains(event.target)) {
+        setOpenNotifModal(false);
+      }
+      if (openProfileModal && profileRef.current && !profileRef.current.contains(event.target)) {
+        setOpenProfileModal(false);
+      }
+      };
+
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [openNotifModal, openProfileModal]);
+
   return(
     <>
-        <nav className={styles.navBar}> 
+    {openNotifModal && (
+      <div ref={notifRef}>
+        <NotifModal />
+      </div>
+    )}
+
+    {openProfileModal && (
+      <div ref={profileRef}>
+        <ProfileModal />
+      </div>
+    )}
+    <nav className={styles.navBar}> 
           <div className={styles.logoSection}> 
             <div className={styles.logoImg}>
               <img src="/logotixx.png" alt="logo" />

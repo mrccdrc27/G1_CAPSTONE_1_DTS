@@ -21,6 +21,9 @@ import AdminArchive from '../pages/admin/archive-page/AdminArchive';
 import AgentInvite from '../pages/admin/agent-page/AgentInvite';
 import WorkflowEditor from '../pages/admin/workflow-page/WorkflowCreator';
 
+// Test (delete agad)
+import Test from '../pages/agent/ticket-details-page/Test';
+
 
 function MainRoutes(){
   return (
@@ -51,6 +54,9 @@ function MainRoutes(){
 
     {/* Error Page */}
     {/* <Route path="*" element={<NotFound />}/> */}
+
+    {/* Test - delete agad*/}
+    <Route path="/test" element={<Test />} />
 
   </Routes>
   );
